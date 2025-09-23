@@ -1,0 +1,28 @@
+﻿@model lab2.net.Models.Student
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; ViewBag.Title = "Edit Student"; }
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.ID)
+    <div class="form-horizontal card">
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstMidName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.TextBoxFor(m => m.FirstMidName, new { @class = "form-control" })</div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.EnrollmentDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">@Html.TextBoxFor(m => m.EnrollmentDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })</div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button class="btn btn-warning" type="submit">Save</button>
+                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}

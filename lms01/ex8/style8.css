@@ -1,0 +1,88 @@
+:root{
+  --panel: #05c3de;       /* nền xanh */
+  --panel-2: #f6f6f6;
+  --header: #fff2a8;      /* nền tiêu đề vàng nhạt */
+  --input: #d6f9c8;       /* nền ô nhập xanh nhạt */
+  --border: #777;
+  --title: #b31414;       /* đỏ tiêu đề */
+}
+
+*{ box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+body{ background:#fff; margin:40px; }
+
+.form-card{
+  max-width: 760px;
+  margin: 0 auto;
+  border: 2px solid var(--border);
+  box-shadow: 8px 8px 10px rgba(0,0,0,.25);
+  background: var(--panel);
+  padding: 10px;
+}
+
+.form-title{
+  background: var(--header);
+  border: 2px solid var(--border);
+  color: var(--title);
+  font-weight: 800;
+  font-size: 2.2rem;
+  text-align: center;
+  padding: 8px 0;
+  margin: 6px;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 12px;
+  align-items: center;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  margin: 6px;
+  padding: 10px;
+}
+
+.row.tall{ align-items: start; }
+
+.row > label{
+  background: rgba(255,255,255,.2);
+  border: 2px solid var(--border);
+  padding: 10px;
+  font-weight: 700;
+  color: #042e3a;
+  text-align: left;
+}
+
+input[type="text"],
+input[type="password"],
+select,
+textarea{
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--border);
+  background: var(--input);
+  outline: none;
+  font-size: 1rem;
+}
+
+textarea{ resize: vertical; }
+
+.stack .ck{ display:block; margin: 6px 0; color:#012a33; }
+.inline label{ margin-right: 22px; }
+
+.actions{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 10px 6px 14px;
+}
+
+.btn{
+  padding: 14px 10px;
+  border: 2px solid var(--border);
+  background: var(--input);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+.btn:active{ transform: translateY(1px); }

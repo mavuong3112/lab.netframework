@@ -1,0 +1,28 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+bin/
+obj/
+[Bb]uild/
+[Oo]ut/
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+
+# IIS/ASP.NET
+App_Data/
+*.log
+
+# Others
+*.vspscc
+*_i.c
+*_p.c
+*.dbmdl
+

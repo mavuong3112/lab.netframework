@@ -1,0 +1,15 @@
+﻿@model lab2.net.Models.Student
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; ViewBag.Title = "Details"; }
+<h2>Details</h2>
+<div class="card">
+    <dl class="dl-horizontal">
+        <dt>Last name</dt>
+        <dd>@Model.LastName</dd>
+        <dt>First/Middle</dt>
+        <dd>@Model.FirstMidName</dd>
+        <dt>Enrollment date</dt>
+        <dd>@Model.EnrollmentDate.ToString("yyyy-MM-dd")</dd>
+    </dl>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+</div>

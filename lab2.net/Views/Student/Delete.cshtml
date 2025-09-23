@@ -1,0 +1,14 @@
+﻿@model lab2.net.Models.Student
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; ViewBag.Title = "Delete"; }
+<h2>Delete</h2>
+<div class="alert alert-danger">Bạn có chắc muốn xóa sinh viên này?</div>
+<div class="card">
+    <p><strong>@Model.LastName @Model.FirstMidName</strong></p>
+    <p>Enrollment: @Model.EnrollmentDate.ToString("yyyy-MM-dd")</p>
+</div>
+@using (Html.BeginForm("Delete", "Student", new { id = Model.ID }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-danger">Delete</button>
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+}

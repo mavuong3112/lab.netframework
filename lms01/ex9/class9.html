@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Exercise #9 – Sign Up Form</title>
+<link rel="stylesheet" href="style9.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="bar">Sign Up</div>
+
+    <form>
+      <label for="fname">First Name</label>
+      <input id="fname" type="text" placeholder="Enter First Name" />
+
+      <label for="lname">Last Name</label>
+      <input id="lname" type="text" placeholder="Enter Last Name" />
+
+      <label>Date of Birth</label>
+      <div class="dob">
+        <select aria-label="Day">
+          <option>Date</option>
+        </select>
+        <select aria-label="Month">
+          <option>Month</option>
+        </select>
+        <select aria-label="Year">
+          <option>Year</option>
+        </select>
+      </div>
+
+      <label>Gender</label>
+      <div class="controls">
+        <label style="font-weight:600;color:#fff;"><input type="radio" name="gender" /> Male</label>
+        <label style="font-weight:600;color:#fff;"><input type="radio" name="gender" /> Female</label>
+      </div>
+
+      <label for="country">Country</label>
+      <select id="country">
+        <option>Country</option>
+      </select>
+
+      <label for="email">E-mail</label>
+      <input id="email" type="email" placeholder="Enter E-mail" />
+
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" placeholder="Enter Phone" />
+
+      <label for="pwd">Password</label>
+      <input id="pwd" type="password" />
+
+      <label for="cpwd">Confirm Password</label>
+      <input id="cpwd" type="password" />
+
+      <div class="terms">
+        <label><input type="checkbox" /> I Agree to the Terms of use</label>
+      </div>
+    </form>
+
+    <div class="footer">
+      <button class="btn submit" type="button">Submit</button>
+      <button class="btn cancel" type="button">Cancel</button>
+    </div>
+  </div>
+</body>
+</html>

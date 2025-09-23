@@ -1,0 +1,61 @@
+:root{
+  --panel-bg: #e9f7fb;
+  --panel-border: #cfcfcf;
+  --shadow: rgba(0,0,0,.25);
+  --text: #111;
+  --muted: #444;
+  --warn: #e41010;
+}
+
+* { box-sizing: border-box; }
+
+body{
+  margin: 0;
+  padding: 48px 24px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: var(--text);
+  line-height: 1.45;
+  background: #fff;
+}
+
+.card{
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 34px 34px;
+  background: var(--panel-bg);
+  border: 2px solid var(--panel-border);
+  box-shadow: 8px 8px 0 var(--shadow);
+}
+
+h1{
+  margin: 0 0 22px;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+h2{
+  margin: 22px 0 8px;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+p{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* Warnings section */
+.warnings h2{
+  color: var(--warn);
+}
+.warnings ul{
+  margin: 10px 0 0 28px;
+  padding: 0;
+}
+.warnings li{
+  color: var(--warn);
+  font-weight: 800;
+  margin: 8px 0;
+}

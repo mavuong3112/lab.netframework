@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+    var title = ViewBag.Title ?? "MVC5 Lab";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            background: #f6f8fb;
+        }
+
+        .navbar {
+            background: #3B46B6;
+        }
+
+            .navbar a, .navbar-brand {
+                color: #fff !important;
+            }
+
+        footer {
+            border-top: 1px solid #e5e8ef;
+            padding: 16px;
+            color: #555;
+            background: #fff;
+            margin-top: 24px
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e7eaf3;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Lab MVC5", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Students", "Index", "Student")</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container body-content" style="padding-top:70px">
+        @RenderBody()
+    </div>
+
+    <footer class="text-center">
+        <span>&copy; @DateTime.Now.Year - Your Name</span>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

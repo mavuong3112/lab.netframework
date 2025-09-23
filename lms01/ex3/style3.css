@@ -1,0 +1,33 @@
+body {
+  font-family: Verdana, Arial, sans-serif;
+  background: #fff;
+  margin: 40px;
+  color: #333;
+}
+
+.card {
+  border: 1px solid #999;
+  box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
+  max-width: 700px;
+  background: #f0f4e2; /* nền xanh nhạt */
+}
+
+.header {
+  background: #6c7a89; /* thanh tiêu đề xanh xám */
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 12px 18px;
+}
+
+.content {
+  padding: 18px 22px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+blockquote {
+  margin: 15px 30px;
+  font-style: italic;
+  color: #000;
+}

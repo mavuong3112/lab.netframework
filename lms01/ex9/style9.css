@@ -1,0 +1,122 @@
+
+  :root{
+    --panel:#1f2431;      /* dark blue/gray panel */
+    --accent:#d9860e;     /* orange header/footer bar */
+    --label:#d2d38e;      /* olive/gold label text */
+    --input:#ffffff;
+    --btn-green:#3a9b57;
+    --btn-red:#cf4a40;
+  }
+
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:grid;
+    place-items:start center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background:#f3f3f3;
+    padding:40px 12px;
+    color:#222;
+  }
+
+  h1{
+    font-size:2.2rem;
+    margin:0 0 12px;
+  }
+
+  .prompt{
+    font-size:1.45rem;
+    margin-bottom:22px;
+  }
+
+  /* Card */
+  .card{
+    width:min(620px, 92vw);
+    background:var(--panel);
+    border-radius:4px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    border:1px solid rgba(0,0,0,.06);
+  }
+
+  /* Header & footer bars */
+  .bar{
+    background:var(--accent);
+    color:#f6e7c1;
+    padding:14px 18px;
+    font-weight:600;
+    font-size:1.1rem;
+  }
+
+  form{
+    padding:26px 26px 10px;
+    display:grid;
+    row-gap:16px;
+    /* two columns: labels and inputs */
+    grid-template-columns: 180px 1fr;
+    align-items:center;
+  }
+
+  label{
+    color:var(--label);
+    font-weight:700;
+    font-size:1.05rem;
+  }
+
+  .controls > * + *{ margin-left:14px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select{
+    width:100%;
+    padding:8px 10px;
+    border:2px solid #dcdcdc;
+    background:var(--input);
+    outline:none;
+    border-radius:2px;
+    font-size:1rem;
+  }
+
+  /* date group */
+  .dob{
+    display:flex;
+    gap:10px;
+  }
+  .dob select{ width:33%; }
+
+  /* terms row spans both columns to match the mock */
+  .terms{
+    grid-column: 1 / -1;
+    color:#c9ba86;
+    font-weight:600;
+    padding-top:4px;
+  }
+  .terms input{ margin-right:8px; transform:translateY(1px); }
+
+  /* Footer actions */
+  .footer{
+    display:flex;
+    justify-content:flex-end;
+    gap:14px;
+    padding:16px 18px 22px;
+    background:var(--accent);
+  }
+  .btn{
+    border:0;
+    padding:10px 24px;
+    font-weight:600;
+    border-radius:3px;
+    color:#fff;
+    cursor:pointer;
+  }
+  .btn.submit{ background:var(--btn-green); }
+  .btn.cancel{ background:var(--btn-red); }
+
+  /* Small screens: stack labels above controls */
+  @media (max-width: 540px){
+    form{ grid-template-columns: 1fr; }
+    label{ margin-bottom:4px; }
+  }
