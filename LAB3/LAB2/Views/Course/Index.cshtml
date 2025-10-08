@@ -1,0 +1,30 @@
+﻿@model IEnumerable<LAB2.Models.Course>
+@{
+    ViewBag.Title = "Course List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Courses</h2>
+<p>@Html.ActionLink("Create New", "Create")</p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>CourseID</th>
+        <th>Title</th>
+        <th>Credits</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var course in Model)
+    {
+        <tr>
+            <td>@course.CourseID</td>
+            <td>@course.Title</td>
+            <td>@course.Credits</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = course.CourseID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = course.CourseID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = course.CourseID })
+            </td>
+        </tr>
+    }
+</table>

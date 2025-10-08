@@ -1,0 +1,40 @@
+﻿@model LAB4.Models.Instructor
+@{
+    ViewBag.Title = "Instructor Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Instructor Details</h2>
+
+<table class="table table-bordered">
+    <tr><th>Last Name</th><td>@Model.LastName</td></tr>
+    <tr><th>First/Middle Name</th><td>@Model.FirstMidName</td></tr>
+    <tr><th>Hire Date</th><td>@Model.HireDate.ToShortDateString()</td></tr>
+    <tr><th>Office</th><td>@Model.Office</td></tr>
+</table>
+
+<h3>Courses Taught by Instructor</h3>
+@if (Model.Courses != null && Model.Courses.Any())
+{
+    <table class="table table-striped">
+        <tr>
+            <th>Number</th>
+            <th>Title</th>
+            <th>Department</th>
+        </tr>
+        @foreach (var course in Model.Courses)
+        {
+            <tr>
+                <td>@course.CourseID</td>
+                <td>@course.Title</td>
+                <td>@(course.Department != null ? course.Department.Name : "N/A")</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">This instructor does not teach any courses.</div>
+}
+
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

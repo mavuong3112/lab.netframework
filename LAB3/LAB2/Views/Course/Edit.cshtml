@@ -1,0 +1,29 @@
+﻿@model LAB2.Models.Course
+@{
+    ViewBag.Title = "Edit Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Course</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.CourseID)
+
+    <div>
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title)
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Credits)
+        @Html.TextBoxFor(m => m.Credits)
+        @Html.ValidationMessageFor(m => m.Credits)
+    </div>
+
+    <button type="submit">Save</button>
+    @Html.ActionLink("Back to List", "Index")
+}

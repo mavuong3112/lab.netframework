@@ -1,0 +1,34 @@
+﻿@model IEnumerable<LAB4.Models.Enrollment>
+@{
+    ViewBag.Title = "Enrollments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Enrollments</h2>
+
+<p>
+    @Html.ActionLink("Create New Enrollment", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Student ID</th>
+        <th>Course ID</th>
+        <th>Grade</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var e in Model)
+    {
+        <tr>
+            <td>@e.StudentID</td>
+            <td>@e.CourseID</td>
+            <td>@e.Grade</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = e.EnrollmentID }, new { @class = "btn btn-info btn-sm" })
+                @Html.ActionLink("Edit", "Edit", new { id = e.EnrollmentID }, new { @class = "btn btn-warning btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id = e.EnrollmentID }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,16 @@
+﻿@model LAB4.Models.Department
+@{
+    ViewBag.Title = "Delete Department";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+<p>Are you sure you want to delete <b>@Model.Name</b>?</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.DepartmentID)
+    <input type="submit" value="Delete" class="btn btn-danger" />
+}
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

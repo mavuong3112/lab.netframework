@@ -1,0 +1,106 @@
+﻿@model IEnumerable<LAB2.Models.Student>
+@{
+    ViewBag.Title = "Student List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p><a href="@Url.Action("Create")">Create New</a></p>
+
+@using (Html.BeginForm("Index", "Student", FormMethod.Get))
+{
+    <input type="text" name="searchString" value="@Request["searchString"]" placeholder="Search by name" />
+    <button type="submit">Search</button>
+}
+
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.ActionLink("LastName", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>FirstMidName</th>
+        <th>
+            @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.LastName</td>
+            <td>@student.FirstMidName</td>
+            <td>@student.EnrollmentDate.ToShortDateString()</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = student.ID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = student.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = student.ID })
+            </td>
+        </tr>
+    }
+</table>
+
+<div>
+    Page @ViewBag.CurrentPage of @ViewBag.TotalPages
+    <br />
+
+    <ul class="pagination">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                @Html.ActionLink("«", "Index", new
+                {
+                    page = ViewBag.CurrentPage - 1,
+                    sortOrder = ViewBag.CurrentSort,
+                    searchString = Request["searchString"]
+                }, new { @class = "page-link" })
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled"><span class="page-link">«</span></li>
+        }
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            if (i == ViewBag.CurrentPage)
+            {
+                <li class="page-item active">
+                    <span class="page-link">@i</span>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    @Html.ActionLink(i.ToString(), "Index", new
+                    {
+                        page = i,
+                        sortOrder = ViewBag.CurrentSort,
+                        searchString = Request["searchString"]
+                    }, new { @class = "page-link" })
+                </li>
+            }
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <li class="page-item">
+                @Html.ActionLink("»", "Index", new
+                {
+                    page = ViewBag.CurrentPage + 1,
+                    sortOrder = ViewBag.CurrentSort,
+                    searchString = Request["searchString"]
+                }, new { @class = "page-link" })
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled"><span class="page-link">»</span></li>
+        }
+    </ul>
+</div>
+
+

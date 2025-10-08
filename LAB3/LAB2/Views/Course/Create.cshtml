@@ -1,0 +1,33 @@
+﻿@model LAB2.Models.Course
+@{
+    ViewBag.Title = "Create Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Course</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.LabelFor(m => m.CourseID)
+        @Html.TextBoxFor(m => m.CourseID)
+        @Html.ValidationMessageFor(m => m.CourseID)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title)
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Credits)
+        @Html.TextBoxFor(m => m.Credits)
+        @Html.ValidationMessageFor(m => m.Credits)
+    </div>
+
+    <button type="submit">Save</button>
+    @Html.ActionLink("Back to List", "Index")
+}

@@ -1,0 +1,44 @@
+﻿@model LAB2.Models.Student
+@{
+    ViewBag.Title = "Student Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<table>
+    <tr><th>ID</th><td>@Model.ID</td></tr>
+    <tr><th>Last Name</th><td>@Model.LastName</td></tr>
+    <tr><th>First Name</th><td>@Model.FirstMidName</td></tr>
+    <tr><th>Enrollment Date</th><td>@Model.EnrollmentDate.ToShortDateString()</td></tr>
+
+</table>
+
+<h3>Enrolled Courses</h3>
+@if (ViewBag.Enrollments != null && ViewBag.Enrollments.Count > 0)
+{
+    <table class="table table-striped">
+        <tr>
+            <th>Course Title</th>
+            <th>Credits</th>
+            <th>Grade</th>
+        </tr>
+        @foreach (var e in ViewBag.Enrollments)
+        {
+            <tr>
+                <td>@e.Title</td>
+                <td>@e.Credits</td>
+                <td>@(e.Grade.HasValue ? e.Grade.ToString() : "No grade")</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No courses enrolled.</p>
+}
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

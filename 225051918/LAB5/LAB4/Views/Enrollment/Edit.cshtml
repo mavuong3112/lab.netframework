@@ -1,0 +1,20 @@
+﻿@model LAB4.Models.Enrollment
+@{
+    ViewBag.Title = "Edit Enrollment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Enrollment</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.EnrollmentID)
+    <div>
+        Student ID: @Html.TextBoxFor(m => m.StudentID) <br />
+        Course ID: @Html.TextBoxFor(m => m.CourseID) <br />
+        Grade: @Html.TextBoxFor(m => m.Grade) <br />
+    </div>
+    <input type="submit" value="Save" class="btn btn-success" />
+}
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

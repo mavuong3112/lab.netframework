@@ -1,0 +1,13 @@
+﻿@model LAB4.Models.Department
+@{
+    ViewBag.Title = "Department Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<p>Name: @Model.Name</p>
+<p>Budget: @Model.Budget</p>
+<p>Start Date: @Model.StartDate.ToShortDateString()</p>
+<p>Instructor ID: @Model.InstructorID</p>
+
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

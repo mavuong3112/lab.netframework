@@ -1,0 +1,21 @@
+﻿@model LAB4.Models.Department
+@{
+    ViewBag.Title = "Edit Department";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Department</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.DepartmentID)
+    <div>
+        Name: @Html.TextBoxFor(m => m.Name) <br />
+        Budget: @Html.TextBoxFor(m => m.Budget) <br />
+        Start Date: @Html.TextBoxFor(m => m.StartDate, "{0:yyyy-MM-dd}", new { type = "date" }) <br />
+        Instructor ID: @Html.TextBoxFor(m => m.InstructorID) <br />
+    </div>
+    <input type="submit" value="Save" class="btn btn-success" />
+}
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

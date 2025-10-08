@@ -1,0 +1,75 @@
+﻿@model LAB4.Models.ViewModels.InstructorIndexViewModel
+@{
+    ViewBag.Title = "Instructors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Instructors</h2>
+<p>@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })</p>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Hire Date</th>
+        <th>Office</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var instructor in Model.Instructors)
+    {
+        <tr class="@(Model.SelectedInstructor?.ID == instructor.ID ? "table-success" : "")">
+            <td>@instructor.LastName</td>
+            <td>@instructor.FirstMidName</td>
+            <td>@instructor.HireDate.ToShortDateString()</td>
+            <td>@instructor.Office</td>
+            <td>
+                @Html.ActionLink("Select", "Index", new { instructorId = instructor.ID }, new { @class = "btn btn-sm btn-info" }) |
+                @Html.ActionLink("Edit", "Edit", new { id = instructor.ID }, new { @class = "btn btn-sm btn-warning" }) |
+                @Html.ActionLink("Details", "Details", new { id = instructor.ID }, new { @class = "btn btn-sm btn-secondary" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = instructor.ID }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+</table>
+
+@if (Model.SelectedInstructor != null && Model.Courses.Any())
+{
+    <h3>Courses Taught by Selected Instructor</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>Number</th>
+            <th>Title</th>
+            <th>Department</th>
+        </tr>
+        @foreach (var c in Model.Courses)
+        {
+            <tr class="@(Model.SelectedCourse?.CourseID == c.CourseID ? "table-success" : "")">
+                <td>@Html.ActionLink("Select", "Index", new { instructorId = Model.SelectedInstructor.ID, courseId = c.CourseID }, new { @class = "btn btn-sm btn-info" })</td>
+                <td>@c.Title</td>
+                <td>@(c.Department != null ? c.Department.Name : "N/A")</td>
+            </tr>
+        }
+    </table>
+}
+
+@if (Model.SelectedCourse != null && Model.Enrollments != null)
+{
+    <h3>Students Enrolled in Selected Course</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Grade</th>
+        </tr>
+        @foreach (var e in Model.Enrollments)
+        {
+            var student = Model.Students.FirstOrDefault(s => s.ID == e.StudentID);
+            if (student != null)
+            {
+                <tr>
+                    <td>@student.LastName, @student.FirstMidName</td>
+                    <td>@e.Grade</td>
+                </tr>
+            }
+        }
+    </table>
+}

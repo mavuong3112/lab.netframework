@@ -1,0 +1,13 @@
+﻿@model LAB4.Models.Enrollment
+@{
+    ViewBag.Title = "Enrollment Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<p>Enrollment ID: @Model.EnrollmentID</p>
+<p>Student ID: @Model.StudentID</p>
+<p>Course ID: @Model.CourseID</p>
+<p>Grade: @Model.Grade</p>
+
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

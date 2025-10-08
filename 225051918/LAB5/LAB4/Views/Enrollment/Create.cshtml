@@ -1,0 +1,19 @@
+﻿@model LAB4.Models.Enrollment
+@{
+    ViewBag.Title = "Create Enrollment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Enrollment</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        Student ID: @Html.TextBoxFor(m => m.StudentID) <br />
+        Course ID: @Html.TextBoxFor(m => m.CourseID) <br />
+        Grade: @Html.TextBoxFor(m => m.Grade) <br />
+    </div>
+    <input type="submit" value="Create" class="btn btn-primary" />
+}
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LAB4.Models.Department>
+@{
+    ViewBag.Title = "Departments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Departments</h2>
+<p>@Html.ActionLink("Create New", "Create")</p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th>
+        <th>Budget</th>
+        <th>Start Date</th>
+        <th>Instructor ID</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var d in Model)
+    {
+        <tr>
+            <td>@d.Name</td>
+            <td>@d.Budget</td>
+            <td>@d.StartDate.ToShortDateString()</td>
+            <td>@d.InstructorID</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = d.DepartmentID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = d.DepartmentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = d.DepartmentID })
+            </td>
+        </tr>
+    }
+</table>

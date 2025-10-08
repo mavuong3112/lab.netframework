@@ -1,0 +1,60 @@
+﻿@model LAB4.Models.ViewModels.InstructorEditViewModel
+@{
+    ViewBag.Title = "Create Instructor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Instructor</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Instructor</h4>
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Instructor.LastName)
+            @Html.TextBoxFor(m => m.Instructor.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Instructor.LastName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Instructor.FirstMidName, "First Name")
+            @Html.TextBoxFor(m => m.Instructor.FirstMidName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Instructor.FirstMidName)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Instructor.HireDate)
+            @Html.TextBoxFor(m => m.Instructor.HireDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Instructor.HireDate)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Instructor.Office)
+            @Html.TextBoxFor(m => m.Instructor.Office, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Instructor.Office)
+        </div>
+
+        <h4>Assign Courses</h4>
+        <div class="form-group">
+            @foreach (var course in Model.AllCourses)
+            {
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"
+                               name="SelectedCourseIDs"
+                               value="@course.CourseID"
+                               @(Model.SelectedCourseIDs.Contains(course.CourseID) ? "checked" : "") />
+                        @course.CourseID - @course.Title
+                    </label>
+                </div>
+            }
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+}

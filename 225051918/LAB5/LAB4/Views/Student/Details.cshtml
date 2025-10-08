@@ -1,0 +1,40 @@
+﻿@model LAB4.Models.ViewModels.StudentDetailsViewModel
+@{
+    ViewBag.Title = "Student Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Student Details</h2>
+
+<table class="table">
+    <tr><th>ID</th><td>@Model.Student.ID</td></tr>
+    <tr><th>Last Name</th><td>@Model.Student.LastName</td></tr>
+    <tr><th>First Name</th><td>@Model.Student.FirstMidName</td></tr>
+    <tr><th>Enrollment Date</th><td>@Model.Student.EnrollmentDate.ToShortDateString()</td></tr>
+</table>
+
+<h3>Enrollments</h3>
+@if (Model.Enrollments.Any())
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Course</th>
+            <th>Credits</th>
+            <th>Grade</th>
+        </tr>
+        @foreach (var e in Model.Enrollments)
+        {
+            <tr>
+                <td>@e.Course.Title</td>
+                <td>@e.Course.Credits</td>
+                <td>@e.Grade</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>This student has no enrollments.</p>
+}
+
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>

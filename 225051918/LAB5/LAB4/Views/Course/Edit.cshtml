@@ -1,0 +1,32 @@
+﻿@model LAB4.Models.Course
+@{
+    ViewBag.Title = "Edit Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.CourseID)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Credits)
+        @Html.TextBoxFor(m => m.Credits, new { @class = "form-control", type = "number" })
+        @Html.ValidationMessageFor(m => m.Credits)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DepartmentID, "Department")
+        @Html.DropDownList("DepartmentID", null, "-- Select Department --", new { @class = "form-control" })
+    </div>
+    <p>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </p>
+}
+<p>@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })</p>
